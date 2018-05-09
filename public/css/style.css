@@ -1,0 +1,12 @@
+.wrapper {
+padding: 10px 30px 10px 30px; 
+}
+
+.action i {
+	color: grey;
+}
+
+.action i:hover {
+	color: black;
+	cursor: pointer;
+}

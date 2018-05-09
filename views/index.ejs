@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TEST</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="container-fluid" style="margin-top: 60px;">
+		<div class="wrapper row">
+			<h2>Restaurants</h2>
+			<table class="table striped">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">Name</th>
+			      <th scope="col">Phone</th>
+			      <th scope="col">Rating</th>
+			      <th scope="col">Site</th>
+			      <th scope="col">Email</th>
+				  <th scope="col">Address</th>
+				  <th scope="col"></th>
+				  <th scope="col"></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	 <% if (data) { %>
+			  	 	 <% data.forEach(function(rest) { %> 
+
+			  	 	 	<tr data-id=<%=rest.id%>>
+					      <th scope="row"><%=rest.id %></th>
+					      <td><%= rest.name %></td>
+					      <td><%= rest.phone %></td>
+					      <td><%= rest.rating %></td>
+					      <td style="max-width: 180px;"><span class="truncate"><%= rest.site %></span></td>
+					       <td style="max-width: 180px;"><span class="truncate"><%= rest.email %></span></td>
+					      <td><%= rest.street + ", " + rest.city + ", " + rest.state%></td>
+					      <td class="action delete"><i class="fa fa-trash" aria-hidden="true"></i> </td>
+					      <td class="action edit"> <a href="/edit/<%=rest.id%>"><i class="far fa-edit"></i> </a></td>
+					    </tr>
+
+			  	 	 <% }) %>
+    			<% } %>
+
+			    
+			  </tbody>
+			</table>
+		</div>
+	</div>
+	<div class="fixed-action-btn">
+		  <a id="add" href="/add" class="btn-floating btn-large red">
+		    <i class="fa fa-plus" aria-hidden="true"></i>
+		  </a>
+	</div>
+</body>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="index.js"></script>
+</html>

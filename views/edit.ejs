@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TEST</title>
+	<base href="/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
+	<link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+	<div class="container" style="margin-top: 60px;">
+		<div class="row">
+			<a href="/"><i class="fas fa-arrow-left"></i> Back</a>
+		<% if (data.length) {
+			var rest = data[0];%>
+			<h2>Update</h2>
+			<form class="col s12" action="/edit" method="POST" id="add-form" onsubmit="return validate()">
+
+			<input type="text" name="id" value="<%=id %>" placeholder="" hidden>
+		      <div class="row">
+		        <div class="input-field col s6">
+		          <input placeholder="Restaurant name" required id="name" name="name" type="text" class="validate" value="<%= rest.name %>">
+		          <label for="name">Name</label>
+		        </div>
+
+		        <div class="input-field col s6">
+					<input placeholder="http://restaurant.com" required id="site" name="site" type="text" class="validate" value="<%= rest.site %>">
+		          	<label for="site">Site</label>
+		        </div>
+		      </div>
+
+		      <div class="row">
+		        <div class="input-field col s6">
+		          <input placeholder="mail@mail.com" required id="email" name="email" type="email" class="validate" value="<%= rest.email %>">
+		          <label for="email">Email</label>
+		        </div>
+
+		        <div class="input-field col s6">
+					<input placeholder="street" required id="street" name="street" type="text" class="validate" value="<%= rest.street %>">
+		          	<label for="street">Street</label>
+		        </div>
+		      </div>
+
+		      <div class="row">
+		        <div class="input-field col s6">
+		          <input placeholder="CDMX" required id="city" name="city" type="text" class="validate" value="<%= rest.city %>">
+		          <label for="city">City</label>
+		        </div>
+
+		        <div class="input-field col s6">
+					<input placeholder="State" required id="state" name="state" type="text" class="validate" value="<%= rest.state %>">
+		          	<label for="street">State</label>
+		        </div>
+		      </div>
+
+		      <div class="row">
+		        <div class="input-field col s6">
+		          <input placeholder="19.436070591" required id="lat" name="lat" type="text" class="validate" value="<%= rest.lat %>">
+		          <label for="lat">Latitude</label>
+		        </div>
+
+		        <div class="input-field col s6">
+					<input placeholder="-99.1297865732" required id="long" name="long" type="text" class="validate" value="<%= rest.lng %>">
+		          	<label for="street">Longitude</label>
+		        </div>
+		      </div>
+
+		      <div class="row">
+		      	<div class="input-field col s6">
+		          <input placeholder="1" required id="rating" name="rating" type="number" class="validate" value="<%= rest.rating %>">
+		          <label for="rating">Rating</label>
+		        </div>
+		      </div>
+
+
+			<button id="send" type="submit" class="waves-effect waves-light btn">SEND</button>
+		    </form>
+
+		    <%} else {%>
+		    	<h2>Id no válido</h2>
+		   	<%}%>
+		</div>
+	</div>
+</body>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.js"
+  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script src="form.js"></script>
+</html>
