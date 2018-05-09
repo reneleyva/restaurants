@@ -3,12 +3,8 @@ var validate = function() {
 		var re_site = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
 		var lat_reg = /^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$/;
 		var lng_reg = /^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$/;
-		let name = $('#name').val();
 		let site = $('#site').val();
 		let email = $('#email').val();
-		let street = $('#street').val();
-		let city = $('#city').val();
-		let state = $('#state').val();
 		let lat = $('#lat').val();
 		let long = $('#long').val();
 		let rating = parseInt($('#rating').val());

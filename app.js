@@ -2,6 +2,7 @@ var express = require('express')
 var app = express()
  
 var mysql = require('mysql')
+var geoSearch = require('./geoSearch'); 
 
 var myConnection  = require('express-myconnection')
 
@@ -64,6 +65,7 @@ app.post('/add', function(req, res) {
                 state: req.sanitize('state').escape().trim(),
                 lat: req.sanitize('lat').escape().trim(),
                 lng: req.sanitize('long').escape().trim(),
+                phone: req.sanitize('phone').escape().trim(),
                 rating: req.sanitize('rating').escape().trim()
             }; 
 
@@ -110,6 +112,7 @@ app.post('/edit', function(req, res) {
                 state: req.sanitize('state').escape().trim(),
                 lat: req.sanitize('lat').escape().trim(),
                 lng: req.sanitize('long').escape().trim(),
+                phone: req.sanitize('phone').escape().trim(),
                 rating: req.sanitize('rating').escape().trim()
             }; 
 
@@ -123,6 +126,25 @@ app.post('/edit', function(req, res) {
         })
 });
 
+//For getting the async data from the promise. Node. 
+async function getRestaurants(lat,lng, r, response) {
+    var result = await geoSearch(lat,lng, r);
+    console.log(result);
+    response.send(JSON.stringify(result));
+};
+
+// /restaurants/statistics?latitude=x&longitude=y&radius=z
+app.get('/restaurants/statistics/', function(req, res) {
+    var {latitude, longitude, radius} = req.query;
+    // Limpiar y validar parametros 
+    if (isNaN(latitude) || isNaN(longitude) || isNaN(radius)) {
+        // NOT VALID 
+        res.send(JSON.stringify({error: "Invalid values"}));
+    } else {
+        getRestaurants(latitude, longitude, radius, res); 
+    }
+    
+});
 
 app.post('/delete', function(req, res) {
     var id = req.body.id; 
