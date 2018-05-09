@@ -34,7 +34,7 @@ app.get('/', function(req, res) {
     req.getConnection(function(error, conn) {
         conn.query('SELECT * FROM Restaurants', function(err, rows, fields) {
             if (err) {
-                alert(err);
+                console.log(err);
             } else {
                 //Render
                 res.render('index', {
